@@ -1,0 +1,1 @@
+insert into cantidad (placa, cantidad, fecha_actualizacion) values (:placa, :cantidad, :fechaActualizacion)

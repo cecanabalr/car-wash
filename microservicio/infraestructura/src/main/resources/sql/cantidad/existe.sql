@@ -1,0 +1,1 @@
+select id, placa, cantidad, fecha_actualizacion from cantidad where placa = :placa

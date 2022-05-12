@@ -45,7 +45,7 @@ class ComandoControladorUsuarioTest {
     }
 
     @Test
-    @DisplayName("Deberia actualizar un usuario")
+    @DisplayName("Deberia actualizar.sql un usuario")
     void deberiaActualizarUnUsuario() throws Exception{
         // arrange
         Long id = 1L;

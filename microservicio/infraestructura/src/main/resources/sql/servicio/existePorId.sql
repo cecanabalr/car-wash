@@ -1,0 +1,1 @@
+select id, nombre, valor from servicio where id = :id

@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 public class FabricaUsuario {
 
     public Usuario crear(ComandoUsuario comandoUsuario) {
-        comandoUsuario.setFecha(LocalDateTime.now());
         return new Usuario(
                 comandoUsuario.getId(),
                 comandoUsuario.getNombre(),

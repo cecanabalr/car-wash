@@ -1,0 +1,1 @@
+insert into servicio (nombre, valor) values (:nombre, :valor)
