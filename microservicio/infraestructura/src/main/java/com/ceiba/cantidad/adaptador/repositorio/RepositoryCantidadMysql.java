@@ -41,12 +41,13 @@ public class RepositoryCantidadMysql implements RepositorioCantidad {
     public Cantidad existePorId(String placa) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("placa", placa);
-
+        Cantidad cantidad;
         try {
-            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoCantidad());
+            cantidad = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoCantidad());
         }catch (EmptyResultDataAccessException e){
-            return null;
+            cantidad = null;
         }
+        return cantidad;
     }
 
 

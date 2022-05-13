@@ -37,7 +37,7 @@ create table reserva (
 create table cantidad (
   id int(11) not null auto_increment,
   placa varchar(10) not null,
-  cantidad int(11) not null,
+  contador int(11) not null,
   fecha_actualizacion datetime not null,
   primary key (id)
 );

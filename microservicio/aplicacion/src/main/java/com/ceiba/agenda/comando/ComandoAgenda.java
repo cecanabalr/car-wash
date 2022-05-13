@@ -12,6 +12,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ComandoAgenda {
-    private LocalDate fecha_inicio;
-    private LocalDate fecha_fin;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
 }

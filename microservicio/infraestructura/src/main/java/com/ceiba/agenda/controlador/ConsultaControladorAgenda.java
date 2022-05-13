@@ -7,14 +7,12 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.List;
 
 @RestController
 @RequestMapping("/agendas")
 @Api(tags={"Controlador consulta agenda"})
-public class ConsultaControladorAgenda {
+public class ConsultaControladorAgenda  {
 
     private final ManejadorListarAgendas manejadorListarAgendas;
 

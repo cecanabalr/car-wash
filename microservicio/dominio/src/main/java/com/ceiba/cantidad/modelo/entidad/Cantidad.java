@@ -16,16 +16,16 @@ public class Cantidad {
 
     private Long id;
     private String placa;
-    private int cantidad;
+    private int contador;
     private LocalDateTime fechaActualizacion;
 
-    public Cantidad(Long id, String placa, int cantidad, LocalDateTime fechaActualizacion) {
+    public Cantidad(Long id, String placa, int contador, LocalDateTime fechaActualizacion) {
 
         validarObligatorio(placa, SE_DEBE_INGRESAR_LA_PLACA);
 
         this.id = id;
         this.placa = placa;
-        this.cantidad = cantidad;
+        this.contador = contador;
         this.fechaActualizacion = fechaActualizacion;
     }
 }

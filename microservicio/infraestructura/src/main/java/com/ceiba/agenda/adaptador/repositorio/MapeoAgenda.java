@@ -13,11 +13,11 @@ public class MapeoAgenda implements RowMapper<Agenda>, MapperResult {
     @Override
     public Agenda mapRow(ResultSet rs, int rowNum) throws SQLException {
         Long id = rs.getLong("id");
-        LocalDateTime fecha_inicio = extraerLocalDateTime(rs, "fecha_inicio");
-        LocalDateTime fecha_fin = extraerLocalDateTime(rs, "fecha_fin");
-        LocalDateTime fecha_creacion = extraerLocalDateTime(rs, "fecha_creacion");
+        LocalDateTime fechaInicio = extraerLocalDateTime(rs, "fecha_inicio");
+        LocalDateTime fechaFin = extraerLocalDateTime(rs, "fecha_fin");
+        LocalDateTime fechaCreacion = extraerLocalDateTime(rs, "fecha_creacion");
         Boolean disponibilidad = rs.getBoolean("id");
-        return new Agenda(id, fecha_inicio, fecha_fin,fecha_creacion,disponibilidad);
+        return new Agenda(id, fechaInicio, fechaFin,fechaCreacion,disponibilidad);
     }
 
 }

@@ -24,10 +24,12 @@ public class DaoCantidadMysql implements DaoCantidad {
     public Cantidad existe(String placa) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("placa", placa);
+        Cantidad cantidad;
         try {
-            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, new MapeoCantidad() );
+            cantidad = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, new MapeoCantidad() );
         }catch (EmptyResultDataAccessException e){
-            return null;
+            cantidad = null;
         }
+        return cantidad;
     }
 }

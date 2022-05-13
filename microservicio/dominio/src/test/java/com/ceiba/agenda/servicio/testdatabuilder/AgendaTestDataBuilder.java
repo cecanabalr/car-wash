@@ -12,9 +12,9 @@ public class AgendaTestDataBuilder {
     private Boolean disponibilidad;
 
     public AgendaTestDataBuilder() {
-        this.fecha_inicio = LocalDateTime.of(2022,5,13,7,0);
-        this.fecha_fin = LocalDateTime.of(2022,5,13,8,0);
-        this.fecha_creacion = LocalDateTime.of(2022,5,13,6,0);
+        this.fecha_inicio = LocalDateTime.now();
+        this.fecha_fin = LocalDateTime.now().plusDays(10);
+        this.fecha_creacion = LocalDateTime.now();
         this.disponibilidad = true;
     }
 

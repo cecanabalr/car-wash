@@ -37,9 +37,9 @@ public class ServicioCrearAgendaTest {
         RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
         Mockito.when(repositorioAgenda.crear(agenda)).thenReturn(10L);
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda(repositorioAgenda);
-        // act - assert
+        // act
         String respuesta = servicioCrearAgenda.ejecutar(agendas);
-
+        // assert
         assertEquals("Agenda creada", respuesta);
         Mockito.verify(repositorioAgenda, Mockito.times(1)).crear(agenda);
     }

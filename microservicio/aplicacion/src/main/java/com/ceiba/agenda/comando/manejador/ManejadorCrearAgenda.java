@@ -5,6 +5,7 @@ import com.ceiba.agenda.comando.ComandoAgenda;
 import com.ceiba.agenda.comando.fabrica.FabricaAgenda;
 import com.ceiba.agenda.modelo.entidad.Agenda;
 import com.ceiba.agenda.servicio.ServicioCrearAgenda;
+import com.ceiba.manejador.ManejadorComandoRespuesta;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -14,7 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ManejadorCrearAgenda {
+public class ManejadorCrearAgenda implements ManejadorComandoRespuesta<ComandoAgenda, ComandoRespuesta<String>> {
+
+    //TODO: falto la implementacion ManejadorComandoRespuesta
 
     private static final int HORA_FIN = 22;
     public static final int HORA_INICIO = 7;
@@ -36,8 +39,8 @@ public class ManejadorCrearAgenda {
     private List<Agenda> agendas(ComandoAgenda comandoAgenda){
         List<Agenda> agendaLista = new ArrayList<>();
         int horaInicio = HORA_INICIO;
-        LocalDate fechaRangoInicial = comandoAgenda.getFecha_inicio();
-        LocalDate fechaRangoFinal = comandoAgenda.getFecha_fin();
+        LocalDate fechaRangoInicial = comandoAgenda.getFechaInicio();
+        LocalDate fechaRangoFinal = comandoAgenda.getFechaFin();
 
         while ( fechaRangoInicial.isBefore(fechaRangoFinal.plusDays(1))) {
 

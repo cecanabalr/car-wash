@@ -20,7 +20,7 @@ public class CantidadTest {
 
         assertEquals(1, cantidad.getId());
         assertEquals("ZXC123", cantidad.getPlaca());
-        assertEquals(1, cantidad.getCantidad());
+        assertEquals(1, cantidad.getContador());
         assertEquals(LocalDateTime.of(2022,5,13,1,0), cantidad.getFechaActualizacion());
     }
 

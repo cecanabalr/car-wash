@@ -93,7 +93,7 @@ public class ServicioCrearReserva {
     }
 
     private boolean validarCantidadLavadas(Cantidad cantidad) {
-        return cantidad != null && cantidad.getCantidad() >= NUMERO_LAVADAS_MAXIMO;
+        return cantidad != null && cantidad.getContador() >= NUMERO_LAVADAS_MAXIMO;
     }
 
     private boolean actualizarDisponibilidad(Agenda agenda) {

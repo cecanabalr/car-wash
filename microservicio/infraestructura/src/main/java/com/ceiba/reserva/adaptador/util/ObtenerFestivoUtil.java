@@ -2,25 +2,23 @@ package com.ceiba.reserva.adaptador.util;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
 @ConfigurationProperties(prefix = "festivo")
 public class ObtenerFestivoUtil {
-    private ArrayList<String> dias;
+    private List<String> dias;
 
-    public ArrayList<String> getDias() {
+    public List<String> getDias() {
         return dias;
     }
 
-    public void setDias(ArrayList<String> dias) {
+    public void setDias(List<String> dias) {
         this.dias = dias;
     }
 
-    public ObtenerFestivoUtil(ArrayList<String> dias) {
+    public ObtenerFestivoUtil(List<String> dias) {
         this.dias = dias;
     }
 

@@ -21,10 +21,10 @@ public class ServicioCrearCantidad {
     public void ejecutar(Cantidad cantidad){
         Cantidad existeCantidad = this.daoCantidad.existe(cantidad.getPlaca());
         if(existeCantidad != null){
-            if(existeCantidad.getCantidad() >= NUMERO_LAVADAS_MAXIMO){
-                existeCantidad.setCantidad(REINICIAR_NUMERO_LAVADAS);
+            if(existeCantidad.getContador() >= NUMERO_LAVADAS_MAXIMO){
+                existeCantidad.setContador(REINICIAR_NUMERO_LAVADAS);
             }else {
-                existeCantidad.setCantidad(existeCantidad.getCantidad()+1);
+                existeCantidad.setContador(existeCantidad.getContador()+1);
             }
             this.repositorioCantidad.actualizar(existeCantidad);
         }else {

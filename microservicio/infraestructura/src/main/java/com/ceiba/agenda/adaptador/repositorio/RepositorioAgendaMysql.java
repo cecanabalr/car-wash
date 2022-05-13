@@ -40,12 +40,12 @@ public class RepositorioAgendaMysql implements RepositorioAgenda {
     public Agenda existePorId(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-
+        Agenda agenda;
         try {
-            return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoAgenda());
+            agenda = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoAgenda());
         }catch (EmptyResultDataAccessException e){
-            return null;
+            agenda = null;
         }
-
+        return  agenda;
     }
 }

@@ -5,11 +5,11 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class festivoUtil implements Festivo {
+public class FestivoUtil implements Festivo {
 
     private final ObtenerFestivoUtil obtenerFestivoUtil;
 
-    public festivoUtil(ObtenerFestivoUtil obtenerFestivoUtil) {
+    public FestivoUtil(ObtenerFestivoUtil obtenerFestivoUtil) {
         this.obtenerFestivoUtil = obtenerFestivoUtil;
     }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ManejadorCrearCantidad {
 
+
     private final FabricaCantidad fabricaCantidad;
     private final ServicioCrearCantidad servicioCrearCantidad;
 

@@ -17,23 +17,23 @@ public class MapeoReserva implements RowMapper<DtoReserva>, MapperResult {
         Long id = rs.getLong("id");
         String nombre = rs.getString("nombre");
         String placa = rs.getString("placa");
-        LocalDateTime fecha_creacion = extraerLocalDateTime(rs, "fecha_creacion");
+        LocalDateTime fechaCreacion = extraerLocalDateTime(rs, "fecha_creacion");
         int total = rs.getInt("total");
 
 
         Long idAgenda = rs.getLong("id_agenda");
-        LocalDateTime fecha_inicio = extraerLocalDateTime(rs, "agenda.fecha_inicio");
-        LocalDateTime fecha_fin = extraerLocalDateTime(rs, "agenda.fecha_fin");
+        LocalDateTime fechaInicio = extraerLocalDateTime(rs, "agenda.fecha_inicio");
+        LocalDateTime fechaFin = extraerLocalDateTime(rs, "agenda.fecha_fin");
         Boolean disponibilidad = rs.getBoolean("agenda.disponibilidad");
 
         Long idServicio = rs.getLong("id_servicio");
         String nombreServicio = rs.getString("servicio.nombre");
         Integer valor = rs.getInt("servicio.valor");
 
-        DtoAgenda agenda = new DtoAgenda(idAgenda,fecha_inicio,fecha_fin,null,disponibilidad);
+        DtoAgenda agenda = new DtoAgenda(idAgenda,fechaInicio,fechaFin,null,disponibilidad);
 
         DtoServicio servicio = new DtoServicio(idServicio,nombreServicio,valor);
 
-        return new DtoReserva(id,nombre,placa,fecha_creacion,agenda,servicio,total);
+        return new DtoReserva(id,nombre,placa,fechaCreacion,agenda,servicio,total);
     }
 }

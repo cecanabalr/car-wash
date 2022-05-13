@@ -1,15 +1,19 @@
 package com.ceiba.reserva.comando.manejador;
 
 import com.ceiba.ComandoRespuesta;
+import com.ceiba.manejador.ManejadorComandoRespuesta;
 import com.ceiba.reserva.comando.ComandoReserva;
 import com.ceiba.reserva.comando.fabrica.FabricaReserva;
 import com.ceiba.cantidad.comando.manejador.ManejadorCrearCantidad;
 import com.ceiba.reserva.modelo.entidad.Reserva;
 import com.ceiba.reserva.servicio.ServicioCrearReserva;
+import com.ceiba.usuario.comando.ComandoUsuario;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ManejadorCrearReserva {
+public class ManejadorCrearReserva  implements ManejadorComandoRespuesta<ComandoReserva, ComandoRespuesta<Long>> {
+
+    //TODO: falto implementar ManejadorComandoRespuesta
 
     private final FabricaReserva fabricaReserva;
     private final ServicioCrearReserva servicioCrearReserva;

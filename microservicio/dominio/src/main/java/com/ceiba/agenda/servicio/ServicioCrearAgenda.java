@@ -27,8 +27,8 @@ public class ServicioCrearAgenda {
                         this.repositorioAgenda.crear(agenda);
                     }
                 });
-                return AGENDA_CREADA;
             }
+        return AGENDA_CREADA;
     }
 
     private boolean isDayWeek(LocalDateTime fechaRangoInicial) {

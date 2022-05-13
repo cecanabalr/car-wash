@@ -33,11 +33,12 @@ public class RepositorioServiceMysql implements RepositorioServicio {
     public Servicio existePorId(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-
+        Servicio servicio;
         try {
             return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoServicio());
         }catch (EmptyResultDataAccessException e){
-            return null;
+            servicio = null;
         }
+        return  servicio;
     }
 }

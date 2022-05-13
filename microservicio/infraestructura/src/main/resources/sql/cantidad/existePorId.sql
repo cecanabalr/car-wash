@@ -1,1 +1,1 @@
-select id,placa,cantidad,fecha_actualizacion from cantidad where placa = :placa
+select id,placa,contador,fecha_actualizacion from cantidad where placa = :placa

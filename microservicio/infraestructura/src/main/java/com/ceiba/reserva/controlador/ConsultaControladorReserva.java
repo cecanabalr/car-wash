@@ -1,6 +1,5 @@
 package com.ceiba.reserva.controlador;
 
-import com.ceiba.agenda.modelo.dto.DtoAgenda;
 import com.ceiba.reserva.consulta.ManejadorListarReserva;
 import com.ceiba.reserva.modelo.dto.DtoReserva;
 import io.swagger.annotations.Api;
