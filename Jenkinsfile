@@ -51,8 +51,8 @@ pipeline {
 
     stage('Static Code Analysis') {
       steps{
-        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:Ceiba.CarWash.carlos.canabal',
-        sonarName:'Ceiba-CarWash-carlos.canabal',
+        sonarqubeMasQualityGatesP(sonarKey:'co.com.ceiba.adn:car-wash-carlos.canabal',
+        sonarName:'CeibaADN-car-wash(carlos.canabal)',
         sonarPathProperties:'./sonar-project.properties')
       }
     }
