@@ -17,7 +17,6 @@ import java.util.List;
 @Component
 public class ManejadorCrearAgenda implements ManejadorComandoRespuesta<ComandoAgenda, ComandoRespuesta<String>> {
 
-    //TODO: falto la implementacion ManejadorComandoRespuesta
 
     private static final int HORA_FIN = 22;
     public static final int HORA_INICIO = 7;
