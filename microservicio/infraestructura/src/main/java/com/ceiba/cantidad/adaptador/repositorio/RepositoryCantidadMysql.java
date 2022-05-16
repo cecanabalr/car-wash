@@ -6,6 +6,8 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.cantidad.modelo.entidad.Cantidad;
 import com.ceiba.cantidad.puerto.repositorio.RepositorioCantidad;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RepositoryCantidadMysql implements RepositorioCantidad {
 
+    Logger log = LoggerFactory.getLogger(RepositoryCantidadMysql.class);
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="cantidad", value="crear")
@@ -45,6 +48,7 @@ public class RepositoryCantidadMysql implements RepositorioCantidad {
         try {
             cantidad = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoCantidad());
         }catch (EmptyResultDataAccessException e){
+            log.debug("existePorId: {}", e.getMessage(), e);
             cantidad = null;
         }
         return cantidad;

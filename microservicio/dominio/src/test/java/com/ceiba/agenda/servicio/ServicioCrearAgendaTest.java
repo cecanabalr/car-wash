@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,11 @@ public class ServicioCrearAgendaTest {
         // arrange
         List<Agenda> agendas = new ArrayList<>();
         Agenda agenda = new AgendaTestDataBuilder().build();
+        Agenda agenda2 = new AgendaTestDataBuilder()
+                .conFechaInicio(LocalDateTime.of(2022,5,15,7,0))
+                .conFechaFin(LocalDateTime.of(2022,5,15,8,0)).build();
         agendas.add(agenda);
+        agendas.add(agenda2);
         RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
         Mockito.when(repositorioAgenda.crear(agenda)).thenReturn(10L);
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda(repositorioAgenda);

@@ -19,9 +19,9 @@ public class AgendaTest {
         Agenda agenda = new AgendaTestDataBuilder().conId(1L).build();
 
         assertEquals(1, agenda.getId());
-        assertEquals( LocalDateTime.of(2022,5,13,7,0), agenda.getFecha_inicio());
-        assertEquals( LocalDateTime.of(2022,5,13,8,0), agenda.getFecha_fin());
-        assertEquals( LocalDateTime.of(2022,5,13,6,0), agenda.getFecha_creacion());
+        assertEquals( LocalDateTime.of(2022,5,13,7,0), agenda.getFechaInicio());
+        assertEquals( LocalDateTime.of(2022,5,13,8,0), agenda.getFechaFin());
+        assertEquals( LocalDateTime.of(2022,5,13,6,0), agenda.getFechaCreacion());
         assertEquals(true, agenda.getDisponibilidad());
     }
 

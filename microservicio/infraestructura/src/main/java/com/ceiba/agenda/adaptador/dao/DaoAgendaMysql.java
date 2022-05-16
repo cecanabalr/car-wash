@@ -33,7 +33,7 @@ public class DaoAgendaMysql implements DaoAgenda {
     @Override
     public List<DtoAgenda> listarPorFechaInicio(LocalDate fechaInicial) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("fecha_inicio", fechaInicial);
+        paramSource.addValue("fechaInicio", fechaInicial);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarPorFechaInicio,paramSource, new MapeoAgenda());
 
     }

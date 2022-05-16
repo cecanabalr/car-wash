@@ -63,7 +63,7 @@ public class ServicioCrearReservaTest {
         Festivo festivo = Mockito.mock(Festivo.class);
 
         Mockito.when(repositorioAgenda.existePorId(60L)).thenReturn(agenda);
-        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFecha_inicio()).toString())).thenReturn(false);
+        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFechaInicio()).toString())).thenReturn(false);
         Mockito.when(repositorioServicio.existePorId(1L)).thenReturn(null);
 
 
@@ -89,7 +89,7 @@ public class ServicioCrearReservaTest {
         Festivo festivo = Mockito.mock(Festivo.class);
 
         Mockito.when(repositorioAgenda.existePorId(60L)).thenReturn(agenda);
-        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFecha_inicio()).toString())).thenReturn(false);
+        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFechaInicio()).toString())).thenReturn(false);
         Mockito.when(repositorioServicio.existePorId(2L)).thenReturn(servicio);
         Mockito.when(repositorioReserva.crear(reserva)).thenReturn(2L);
 
@@ -116,7 +116,7 @@ public class ServicioCrearReservaTest {
 
         Mockito.when(repositorioAgenda.existePorId(60L)).thenReturn(agenda);
         Mockito.when(repositorioServicio.existePorId(1L)).thenReturn(null);
-        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFecha_inicio()).toString())).thenReturn(true);
+        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFechaInicio()).toString())).thenReturn(true);
 
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva,repositorioAgenda,repositorioCantidad,repositorioServicio,festivo);
 
@@ -140,7 +140,7 @@ public class ServicioCrearReservaTest {
         Festivo festivo = Mockito.mock(Festivo.class);
 
         Mockito.when(repositorioAgenda.existePorId(60L)).thenReturn(agenda);
-        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFecha_inicio()).toString())).thenReturn(true);
+        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFechaInicio()).toString())).thenReturn(true);
         Mockito.when(repositorioServicio.existePorId(2L)).thenReturn(servicio);
         Mockito.when(repositorioReserva.crear(reserva)).thenReturn(2L);
 
@@ -168,7 +168,7 @@ public class ServicioCrearReservaTest {
         Festivo festivo = Mockito.mock(Festivo.class);
 
         Mockito.when(repositorioAgenda.existePorId(60L)).thenReturn(agenda);
-        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFecha_inicio()).toString())).thenReturn(true);
+        Mockito.when(festivo.getFestivos(LocalDate.from(agenda.getFechaInicio()).toString())).thenReturn(true);
         Mockito.when(repositorioServicio.existePorId(2L)).thenReturn(servicio);
         Mockito.when(repositorioReserva.crear(reserva)).thenReturn(2L);
         Mockito.when(repositorioCantidad.existePorId("ZXC123")).thenReturn(cantidad);

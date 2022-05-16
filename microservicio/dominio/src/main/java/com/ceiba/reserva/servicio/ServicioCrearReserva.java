@@ -50,7 +50,7 @@ public class ServicioCrearReserva {
 
             if(validarCantidadLavadas(cantidad)){
                 reserva.setTotal(LAVADA_GRATIS);
-            } else if (validarDiaFestivo(agenda.getFecha_inicio())) {
+            } else if (validarDiaFestivo(agenda.getFechaInicio())) {
                 reserva.setTotal(calcularIncrementoDiaFestivo(servicio));
             } else if (validarSiEsLunes(agenda)){
                 reserva.setTotal(calcularDescuentoLunes(servicio));
@@ -89,7 +89,7 @@ public class ServicioCrearReserva {
     }
 
     private boolean validarSiEsLunes(Agenda agenda) {
-        return agenda != null && agenda.getFecha_inicio().getDayOfWeek().equals(DayOfWeek.MONDAY);
+        return agenda != null && agenda.getFechaInicio().getDayOfWeek().equals(DayOfWeek.MONDAY);
     }
 
     private boolean validarCantidadLavadas(Cantidad cantidad) {

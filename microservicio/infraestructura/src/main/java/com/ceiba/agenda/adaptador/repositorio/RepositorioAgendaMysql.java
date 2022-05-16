@@ -4,6 +4,8 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.agenda.modelo.entidad.Agenda;
 import com.ceiba.agenda.puerto.repositorio.RepositorioAgenda;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RepositorioAgendaMysql implements RepositorioAgenda {
 
+    Logger log = LoggerFactory.getLogger(RepositorioAgendaMysql.class);
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="agenda", value="crear")
@@ -44,6 +47,7 @@ public class RepositorioAgendaMysql implements RepositorioAgenda {
         try {
             agenda = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoAgenda());
         }catch (EmptyResultDataAccessException e){
+            log.debug("existePorId: {}", e.getMessage(), e);
             agenda = null;
         }
         return  agenda;

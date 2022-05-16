@@ -17,20 +17,20 @@ public class Agenda {
     private static final String SE_DEBE_INGRESAR_LA_FECHA_INICIAL = "Se debe ingresar la fecha inicial";
     private static final String SE_DEBE_INGRESAR_LA_FECHA_FINAL = "Se debe ingresar la fecha final";
     private Long id;
-    private LocalDateTime fecha_inicio;
-    private LocalDateTime fecha_fin;
-    private LocalDateTime fecha_creacion;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin;
+    private LocalDateTime fechaCreacion;
     private Boolean disponibilidad;
 
 
-    public Agenda(Long id, LocalDateTime fecha_inicio, LocalDateTime fecha_fin, LocalDateTime fecha_creacion, Boolean disponibilidad) {
-        validarObligatorio(fecha_inicio, SE_DEBE_INGRESAR_LA_FECHA_INICIAL);
-        validarObligatorio(fecha_fin, SE_DEBE_INGRESAR_LA_FECHA_FINAL);
-        validarMenor(fecha_inicio, fecha_fin, NO_PUEDE_SER_MAYOR_A_LA_FECHA_FINAL);
+    public Agenda(Long id, LocalDateTime fechaInicio, LocalDateTime fechaFin, LocalDateTime fechaCreacion, Boolean disponibilidad) {
+        validarObligatorio(fechaInicio, SE_DEBE_INGRESAR_LA_FECHA_INICIAL);
+        validarObligatorio(fechaFin, SE_DEBE_INGRESAR_LA_FECHA_FINAL);
+        validarMenor(fechaInicio, fechaFin, NO_PUEDE_SER_MAYOR_A_LA_FECHA_FINAL);
         this.id = id;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
-        this.fecha_creacion = fecha_creacion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.fechaCreacion = fechaCreacion;
         this.disponibilidad = disponibilidad;
     }
 }

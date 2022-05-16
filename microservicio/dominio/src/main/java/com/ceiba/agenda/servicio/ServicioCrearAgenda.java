@@ -23,7 +23,7 @@ public class ServicioCrearAgenda {
                throw new ExcepcionRangoFechaNoValido(RANGO_DE_FECHA_SELECCIONADO_NO_VALIDO);
             }else{
                 agendas.forEach(agenda -> {
-                    if(isDayWeek(agenda.getFecha_inicio())){
+                    if(isDayWeek(agenda.getFechaInicio())){
                         this.repositorioAgenda.crear(agenda);
                     }
                 });
