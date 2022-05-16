@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DaoCantidadMysql implements DaoCantidad {
 
-    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger(DaoCantidadMysql.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DaoCantidadMysql.class);
     private static final String MENSAJE_ERROR = "Error existePorId: {} ";
 
 
@@ -34,7 +34,7 @@ public class DaoCantidadMysql implements DaoCantidad {
         try {
             cantidad = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExiste,paramSource, new MapeoCantidad() );
         }catch (EmptyResultDataAccessException e){
-            LOGGER_ERROR.error(MENSAJE_ERROR, e.getMessage());
+            LOG.error(MENSAJE_ERROR, e.getMessage());
         }
         return cantidad;
     }

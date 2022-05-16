@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class RepositorioAgendaMysql implements RepositorioAgenda {
 
-    private static final Logger LOGGER_ERROR = LoggerFactory.getLogger(RepositorioAgendaMysql.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RepositorioAgendaMysql.class);
     private static final String MENSAJE_ERROR = "Error existePorId: {} ";
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
@@ -49,7 +49,7 @@ public class RepositorioAgendaMysql implements RepositorioAgenda {
          try{
              agenda = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoAgenda());
          }catch (EmptyResultDataAccessException e){
-             LOGGER_ERROR.error(MENSAJE_ERROR, e.getMessage());
+             LOG.error(MENSAJE_ERROR, e.getMessage());
          }
 
         return  agenda;
