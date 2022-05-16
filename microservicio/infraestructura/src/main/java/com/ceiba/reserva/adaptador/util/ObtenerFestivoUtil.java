@@ -2,6 +2,8 @@ package com.ceiba.reserva.adaptador.util;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,15 +11,13 @@ import java.util.List;
 @ConfigurationProperties(prefix = "festivo")
 public class ObtenerFestivoUtil {
 
-
-
     private List<String> dias;
 
     public List<String> getDias() {
-        return dias;
+        return new ArrayList<>(dias);
     }
 
     public void setDias(List<String> dias) {
-        this.dias = dias;
+        this.dias = new ArrayList<>(dias);
     }
 }
