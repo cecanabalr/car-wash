@@ -3,7 +3,7 @@ package com.ceiba.reserva.modelo.entidad;
 import java.util.Arrays;
 import java.util.List;
 
-public class DiasFestivos {
+public final class DiasFestivos {
 
     private DiasFestivos(){}
 
