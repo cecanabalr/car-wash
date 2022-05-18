@@ -4,7 +4,7 @@ import com.ceiba.agenda.modelo.entidad.Agenda;
 
 public interface RepositorioAgenda {
 
-    Long crear(Agenda agenda);
+    void crear(Agenda agenda);
 
     void actualizar(Agenda agenda);
 

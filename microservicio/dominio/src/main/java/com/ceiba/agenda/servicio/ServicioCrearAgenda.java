@@ -3,9 +3,6 @@ package com.ceiba.agenda.servicio;
 import com.ceiba.agenda.modelo.entidad.Agenda;
 import com.ceiba.agenda.puerto.repositorio.RepositorioAgenda;
 import com.ceiba.dominio.excepcion.ExcepcionRangoFechaNoValido;
-
-import java.time.DayOfWeek;
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class ServicioCrearAgenda {
@@ -22,17 +19,13 @@ public class ServicioCrearAgenda {
             if (agendas.isEmpty()){
                throw new ExcepcionRangoFechaNoValido(RANGO_DE_FECHA_SELECCIONADO_NO_VALIDO);
             }else{
-                agendas.forEach(agenda -> {
-                    if(isDayWeek(agenda.getFechaInicio())){
+                agendas.forEach(agenda ->{
+                    if (Agenda.isDayWeek(agenda.getFechaInicio())){
                         this.repositorioAgenda.crear(agenda);
                     }
                 });
             }
         return AGENDA_CREADA;
-    }
 
-    private boolean isDayWeek(LocalDateTime fechaRangoInicial) {
-        return !(fechaRangoInicial.getDayOfWeek() == DayOfWeek.SATURDAY
-                || fechaRangoInicial.getDayOfWeek() == DayOfWeek.SUNDAY);
     }
 }

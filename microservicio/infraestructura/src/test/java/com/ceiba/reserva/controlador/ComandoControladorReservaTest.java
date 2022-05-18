@@ -1,7 +1,6 @@
 package com.ceiba.reserva.controlador;
 
 import com.ceiba.ApplicationMock;
-import com.ceiba.agenda.controlador.ComandoControladorAgenda;
 import com.ceiba.reserva.comando.ComandoReserva;
 import com.ceiba.reserva.servicio.testdatabuilder.ComandoReservaTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,6 +35,19 @@ public class ComandoControladorReservaTest {
     @DisplayName("Deberia crear una reserva")
     void deberiaCrearUnaReserva() throws Exception{
         ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
+
+        mocMvc.perform(post("/reserva")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(reserva)))
+                .andExpect(status().isOk())
+                .andExpect(content().json("{'valor': 2}"));
+    }
+
+    @Test
+    @DisplayName("Deberia crear una reserva")
+    void deberiaCrearUnaReserva2() throws Exception{
+        ComandoReserva reserva = new ComandoReservaTestDataBuilder().build();
+        reserva.setPlaca("ABC123");
 
         mocMvc.perform(post("/reserva")
                         .contentType(MediaType.APPLICATION_JSON)

@@ -2,11 +2,7 @@ package com.ceiba.configuracion;
 
 import com.ceiba.agenda.puerto.repositorio.RepositorioAgenda;
 import com.ceiba.agenda.servicio.ServicioCrearAgenda;
-import com.ceiba.cantidad.puerto.dao.DaoCantidad;
-import com.ceiba.cantidad.puerto.repositorio.RepositorioCantidad;
-import com.ceiba.cantidad.servicio.ServicioCrearCantidad;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
-import com.ceiba.reserva.puerto.util.Festivo;
 import com.ceiba.reserva.servicio.ServicioCrearReserva;
 import com.ceiba.servicio.puerto.repositorio.RepositorioServicio;
 import com.ceiba.servicio.servicio.ServicioCrearServicio;
@@ -44,16 +40,7 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearReserva servicioCrearReserva(RepositorioReserva repositorioReserva,
-                                                     RepositorioAgenda repositorioAgenda,
-                                                     RepositorioCantidad repositorioCantidad,
-                                                     RepositorioServicio repositorioServicio,
-                                                     Festivo isFestivo) {
-        return new ServicioCrearReserva(repositorioReserva, repositorioAgenda, repositorioCantidad, repositorioServicio, isFestivo);
-    }
-
-    @Bean
-    public ServicioCrearCantidad servicioCrearCantidad(RepositorioCantidad repositorioCantidad, DaoCantidad daoCantidad) {
-        return new ServicioCrearCantidad(repositorioCantidad, daoCantidad);
+    public ServicioCrearReserva servicioCrearReserva(RepositorioReserva repositorioReserva) {
+        return new ServicioCrearReserva(repositorioReserva);
     }
 }

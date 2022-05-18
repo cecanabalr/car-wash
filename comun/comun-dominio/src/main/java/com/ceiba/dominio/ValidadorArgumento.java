@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
+import com.ceiba.dominio.excepcion.ExcepcionRegistroNoDisponible;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 
@@ -92,6 +93,12 @@ public class ValidadorArgumento {
             Long.parseLong(valor);
         } catch (NumberFormatException numberFormatException) {
             throw new ExcepcionValorInvalido(mensaje);
+        }
+    }
+
+    public static void validarExistenciaRegistro(Object valor,String mensaje) {
+        if(valor == null){
+            throw new ExcepcionRegistroNoDisponible(mensaje);
         }
     }
 }

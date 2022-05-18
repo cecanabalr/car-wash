@@ -1,6 +1,12 @@
 package com.ceiba.reserva.servicio.testdatabuilder;
 
+import com.ceiba.agenda.modelo.entidad.Agenda;
+import com.ceiba.agenda.servicio.testdatabuilder.AgendaTestDataBuilder;
+import com.ceiba.cantidad.modelo.entidad.Cantidad;
+import com.ceiba.cantidad.servicio.testdatabuilder.CantidadTestDataBuilder;
 import com.ceiba.reserva.modelo.entidad.Reserva;
+import com.ceiba.servicio.modelo.entidad.Servicio;
+import com.ceiba.servicio.servicio.testdatabuilder.ServicioTestDataBuilder;
 
 import java.time.LocalDateTime;
 
@@ -10,17 +16,18 @@ public class ReservaTestDataBuilder {
     private String nombre;
     private String placa;
     private LocalDateTime fechaCreacion;
-    private Long idAgenda;
-    private Long idServicio;
-
+    private Agenda agenda;
+    private Servicio servicio;
+    private Cantidad cantidad;
     private int total;
 
     public ReservaTestDataBuilder() {
         this.nombre = "carlos";
         this.placa = "ZXC123";
         this.fechaCreacion = LocalDateTime.of(2022,5,13,6,0);
-        this.idAgenda = 60L;
-        this.idServicio = 2L;
+        this.agenda = new AgendaTestDataBuilder().conId(1L).build();
+        this.servicio = new ServicioTestDataBuilder().conId(1L).build();
+        this.cantidad = new CantidadTestDataBuilder().conId(1L).build();
         this.total = 0;
     }
 
@@ -44,13 +51,18 @@ public class ReservaTestDataBuilder {
         return this;
     }
 
-    public ReservaTestDataBuilder conIdAgenda(Long idAgenda) {
-        this.idAgenda = idAgenda;
+    public ReservaTestDataBuilder conIdAgenda(Agenda agenda) {
+        this.agenda = agenda;
         return this;
     }
 
-    public ReservaTestDataBuilder conIdServicio(Long idServicio) {
-        this.idServicio = idServicio;
+    public ReservaTestDataBuilder conIdServicio(Servicio servicio) {
+        this.servicio = servicio;
+        return this;
+    }
+
+    public ReservaTestDataBuilder conCantidad(Cantidad cantidad) {
+        this.cantidad = cantidad;
         return this;
     }
 
@@ -60,6 +72,6 @@ public class ReservaTestDataBuilder {
     }
 
     public Reserva build(){
-        return new Reserva(id,nombre,placa,fechaCreacion,idAgenda,idServicio,total);
+        return new Reserva(id,nombre,placa,fechaCreacion,agenda,servicio,cantidad,total);
     }
 }

@@ -3,19 +3,14 @@ package com.ceiba.agenda.comando.fabrica;
 import com.ceiba.agenda.modelo.entidad.Agenda;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 @Component
 public class FabricaAgenda {
 
-    public Agenda crear(LocalDateTime fechaInicio,LocalDateTime fechaFin){
-        return new Agenda(
-                0L,
-                fechaInicio,
-                fechaFin,
-                LocalDateTime.now(),
-                true
-        );
+    public List<Agenda> crear(LocalDate fechaInicio, LocalDate fechaFin){
+        return Agenda.agendas(fechaInicio,fechaFin);
     }
 
 }

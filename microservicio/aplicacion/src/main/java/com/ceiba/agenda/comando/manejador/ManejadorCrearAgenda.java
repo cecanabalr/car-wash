@@ -17,10 +17,6 @@ import java.util.List;
 @Component
 public class ManejadorCrearAgenda implements ManejadorComandoRespuesta<ComandoAgenda, ComandoRespuesta<String>> {
 
-
-    private static final int HORA_FIN = 22;
-    public static final int HORA_INICIO = 7;
-
     private final FabricaAgenda fabricaAgenda;
     private final ServicioCrearAgenda servicioCrearAgenda;
 
@@ -31,35 +27,9 @@ public class ManejadorCrearAgenda implements ManejadorComandoRespuesta<ComandoAg
     }
 
     public ComandoRespuesta<String> ejecutar(ComandoAgenda comandoAgenda){
+        List<Agenda> agendas = this.fabricaAgenda.crear(comandoAgenda.getFechaInicio(), comandoAgenda.getFechaFin());
         return new ComandoRespuesta<>(this.servicioCrearAgenda
-                .ejecutar(agendas(comandoAgenda)));
+                .ejecutar(agendas));
     }
 
-    private List<Agenda> agendas(ComandoAgenda comandoAgenda){
-        List<Agenda> agendaLista = new ArrayList<>();
-        int horaInicio = HORA_INICIO;
-        LocalDate fechaRangoInicial = comandoAgenda.getFechaInicio();
-        LocalDate fechaRangoFinal = comandoAgenda.getFechaFin();
-
-        while ( fechaRangoInicial.isBefore(fechaRangoFinal.plusDays(1))) {
-
-            while (horaInicio <= HORA_FIN) {
-               LocalDateTime fechaInicioPorDia =
-                      agendaPorHora(fechaRangoInicial, LocalTime.of(horaInicio, 0));
-               LocalDateTime fechaFinPorDia = fechaInicioPorDia.plusHours(1);
-               agendaLista.add(this.fabricaAgenda.crear(fechaInicioPorDia, fechaFinPorDia));
-               horaInicio += 1;
-            }
-            horaInicio = HORA_INICIO;
-            fechaRangoInicial = fechaRangoInicial.plusDays(1);
-
-        }
-
-        return agendaLista;
-
-    }
-
-    private LocalDateTime agendaPorHora(LocalDate fecha, LocalTime hora){
-        return LocalDateTime.of(fecha,hora);
-    }
 }

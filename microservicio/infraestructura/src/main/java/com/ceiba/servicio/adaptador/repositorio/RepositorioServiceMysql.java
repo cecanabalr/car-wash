@@ -2,12 +2,10 @@ package com.ceiba.servicio.adaptador.repositorio;
 
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
+import com.ceiba.infraestructura.jdbc.EjecucionBaseDeDatos;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.servicio.modelo.entidad.Servicio;
 import com.ceiba.servicio.puerto.repositorio.RepositorioServicio;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
@@ -15,9 +13,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepositorioServiceMysql implements RepositorioServicio {
-
-    private static final Logger LOG = LoggerFactory.getLogger(RepositorioServiceMysql.class);
-    private static final String MENSAJE_ERROR = "Error existePorId: {} ";
 
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
@@ -40,12 +35,8 @@ public class RepositorioServiceMysql implements RepositorioServicio {
     public Servicio existePorId(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        Servicio servicio = null;
-        try {
-            servicio = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoServicio());
-        }catch (EmptyResultDataAccessException e){
-            LOG.error(MENSAJE_ERROR, e.getMessage());
-        }
-        return  servicio;
+
+        return EjecucionBaseDeDatos.obtenerUnObjetoONull(()->
+            this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoServicio()));
     }
 }

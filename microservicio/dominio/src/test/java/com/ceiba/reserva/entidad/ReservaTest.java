@@ -13,14 +13,14 @@ public class ReservaTest {
     @Test
     @DisplayName("Deberia crear correctamente la reserva")
     void deberiaCrearCorrectamenteLaReserva() {
-        Reserva agenda = new ReservaTestDataBuilder().conId(1L).conTotal(20000).build();
+        Reserva reserva = new ReservaTestDataBuilder().conId(1L).conTotal(20000).build();
 
-        assertEquals(1, agenda.getId());
-        assertEquals("carlos", agenda.getNombre());
-        assertEquals("ZXC123", agenda.getPlaca());
-        assertEquals(60L, agenda.getIdAgenda());
-        assertEquals(2L, agenda.getIdServicio());
-        assertEquals(20000, agenda.getTotal());
+        assertEquals(1, reserva.getId());
+        assertEquals("carlos", reserva.getNombre());
+        assertEquals("ZXC123", reserva.getPlaca());
+        assertEquals(1L, reserva.getAgenda().getId());
+        assertEquals(1L, reserva.getServicio().getId());
+        assertEquals(20000, reserva.getTotal());
     }
 
     @Test
@@ -46,29 +46,5 @@ public class ReservaTest {
                     reservaTestDataBuilder.build();
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar la placa");
-    }
-    @Test
-    @DisplayName("Deberia fallar sin el id del servicio de la reserva")
-    void deberiaFallarSinIdServicioDeReserva() {
-
-        //Arrange
-        ReservaTestDataBuilder reservaTestDataBuilder = new ReservaTestDataBuilder().conIdServicio(null).conId(1L);
-        //act-assert
-        assertThrows(() -> {
-                    reservaTestDataBuilder.build();
-                },
-                ExcepcionValorObligatorio.class, "Se debe ingresar el servicio");
-    }
-    @Test
-    @DisplayName("Deberia fallar sin el id de la reserva de la reserva")
-    void deberiaFallarSinIdAgendaDeReserva() {
-
-        //Arrange
-        ReservaTestDataBuilder reservaTestDataBuilder = new ReservaTestDataBuilder().conIdAgenda(null).conId(1L);
-        //act-assert
-        assertThrows(() -> {
-                    reservaTestDataBuilder.build();
-                },
-                ExcepcionValorObligatorio.class, "Se debe ingresar la agenda");
     }
 }

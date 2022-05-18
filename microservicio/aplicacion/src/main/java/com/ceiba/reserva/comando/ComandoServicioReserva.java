@@ -9,9 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComandoReserva {
-    private String nombre;
-    private String placa;
-    private ComandoServicioReserva servicio;
-    private ComandoAgendaReserva agenda;
+public class ComandoServicioReserva {
+    private Long id;
 }

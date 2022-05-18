@@ -40,7 +40,7 @@ public class ServicioCrearAgendaTest {
         agendas.add(agenda);
         agendas.add(agenda2);
         RepositorioAgenda repositorioAgenda = Mockito.mock(RepositorioAgenda.class);
-        Mockito.when(repositorioAgenda.crear(agenda)).thenReturn(10L);
+
         ServicioCrearAgenda servicioCrearAgenda = new ServicioCrearAgenda(repositorioAgenda);
         // act
         String respuesta = servicioCrearAgenda.ejecutar(agendas);

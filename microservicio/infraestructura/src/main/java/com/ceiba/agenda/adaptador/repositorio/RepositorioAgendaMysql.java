@@ -1,21 +1,15 @@
 package com.ceiba.agenda.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
+import com.ceiba.infraestructura.jdbc.EjecucionBaseDeDatos;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.agenda.modelo.entidad.Agenda;
 import com.ceiba.agenda.puerto.repositorio.RepositorioAgenda;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class RepositorioAgendaMysql implements RepositorioAgenda {
-
-    private static final Logger LOG = LoggerFactory.getLogger(RepositorioAgendaMysql.class);
-    private static final String MENSAJE_ERROR = "Error existePorId: {} ";
-
     private final CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate;
 
     @SqlStatement(namespace="agenda", value="crear")
@@ -32,8 +26,8 @@ public class RepositorioAgendaMysql implements RepositorioAgenda {
     }
 
     @Override
-    public Long crear(Agenda agenda) {
-        return this.customNamedParameterJdbcTemplate.crear(agenda, sqlCrear);
+    public void crear(Agenda agenda) {
+         this.customNamedParameterJdbcTemplate.crear(agenda, sqlCrear);
     }
 
     @Override
@@ -45,13 +39,8 @@ public class RepositorioAgendaMysql implements RepositorioAgenda {
     public Agenda existePorId(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        Agenda agenda = null;
-         try{
-             agenda = this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoAgenda());
-         }catch (EmptyResultDataAccessException e){
-             LOG.error(MENSAJE_ERROR, e.getMessage());
-         }
 
-        return  agenda;
+        return EjecucionBaseDeDatos.obtenerUnObjetoONull(()->
+                this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExistePorId,paramSource, new MapeoAgenda()));
     }
 }
