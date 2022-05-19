@@ -10,7 +10,7 @@ import java.util.List;
 public class FabricaAgenda {
 
     public List<Agenda> crear(LocalDate fechaInicio, LocalDate fechaFin){
-        return Agenda.agendas(fechaInicio,fechaFin);
+        return new Agenda().agendas(fechaInicio,fechaFin);
     }
 
 }

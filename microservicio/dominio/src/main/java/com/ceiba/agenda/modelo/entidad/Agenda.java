@@ -39,7 +39,10 @@ public class Agenda {
         this.disponibilidad = disponibilidad;
     }
 
-    public static List<Agenda> agendas(LocalDate fechaRangoInicial, LocalDate fechaRangoFinal){
+    public Agenda() {
+    }
+
+    public  List<Agenda> agendas(LocalDate fechaRangoInicial, LocalDate fechaRangoFinal){
         List<Agenda> agendaLista = new ArrayList<>();
         int horaInicio = HORA_INICIO;
         while ( fechaRangoInicial.isBefore(fechaRangoFinal.plusDays(1))) {
