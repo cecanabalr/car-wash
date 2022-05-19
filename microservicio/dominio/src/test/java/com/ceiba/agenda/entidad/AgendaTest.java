@@ -6,10 +6,13 @@ import com.ceiba.agenda.servicio.testdatabuilder.AgendaTestDataBuilder;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static com.ceiba.BasePrueba.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AgendaTest {
 
@@ -49,6 +52,34 @@ public class AgendaTest {
                     agendaTestDataBuilder.build();
                 },
                 ExcepcionValorObligatorio.class, "Se debe ingresar la fecha final");
+    }
+
+    @Test
+    @DisplayName("Deberia crear lista de agendas")
+    void deberiaCrearListaDeAgendasCorrectamente() {
+
+        LocalDate fechaInicio = LocalDate.now();
+        LocalDate fechaFin = fechaInicio.plusDays(5);
+
+        Agenda agenda = new Agenda();
+
+        List<Agenda> agendas = agenda.agendas(fechaInicio, fechaFin);
+
+        assertFalse(agendas.isEmpty());
+    }
+
+    @Test
+    @DisplayName("Deberia crear lista de agendas")
+    void deberiaCrearListaDeAgendasVaciaCorrectamente() {
+
+        LocalDate fechaFin = LocalDate.now();
+        LocalDate fechaInicio = fechaFin.plusDays(5);
+
+        Agenda agenda = new Agenda();
+
+        List<Agenda> agendas = agenda.agendas(fechaInicio, fechaFin);
+
+        assertTrue(agendas.isEmpty());
     }
 }
 
