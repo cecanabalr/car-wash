@@ -24,7 +24,7 @@ create table agenda (
 
 create table reserva (
   id int(11) not null auto_increment,
-  nombre varchar(10) not null,
+  nombre varchar(100) not null,
   placa varchar(10) not null,
   fecha_creacion datetime not null,
   total int(11) not null,

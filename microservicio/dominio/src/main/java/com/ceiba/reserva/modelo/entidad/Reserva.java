@@ -60,15 +60,18 @@ public class Reserva {
         Cantidad actualizarCantidad = Cantidad.actualizarCantidad(reserva);
 
         int total = LAVADA_GRATIS;
-        if(actualizarCantidad.getId()== 0){
-            total = reserva.getServicio().getValor();
-        }else if (DiasFestivos.getDias().contains(fechaReserva)) {
-            total = reserva.getServicio()
-                    .calcularIncrementoDiaFestivo(reserva.getServicio().getValor());
-        }else if (Agenda.validarSiEsLunes(reserva.getAgenda().getFechaInicio())){
-            total = reserva.getServicio()
-                    .calcularDescuentoLunes(reserva.getServicio().getValor());
+        if(actualizarCantidad.getContador() != LAVADA_GRATIS){
+            if( !DiasFestivos.getDias().contains(fechaReserva) && !Agenda.validarSiEsLunes(reserva.getAgenda().getFechaInicio())){
+                total = reserva.getServicio().getValor();
+            }else if (DiasFestivos.getDias().contains(fechaReserva)) {
+                total = reserva.getServicio()
+                        .calcularIncrementoDiaFestivo(reserva.getServicio().getValor());
+            }else if (Agenda.validarSiEsLunes(reserva.getAgenda().getFechaInicio())){
+                total = reserva.getServicio()
+                        .calcularDescuentoLunes(reserva.getServicio().getValor());
+            }
         }
+
 
         Agenda actualizarAgenda = Agenda.actualizarDisponibilidad(reserva.getAgenda());
 

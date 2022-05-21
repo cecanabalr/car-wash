@@ -3,6 +3,7 @@ package com.ceiba.servicio.modelo.entidad;
 import com.ceiba.dominio.excepcion.ExcepcionRegistroNoDisponible;
 import lombok.Getter;
 
+import static com.ceiba.dominio.ValidadorArgumento.validarNoVacio;
 import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
