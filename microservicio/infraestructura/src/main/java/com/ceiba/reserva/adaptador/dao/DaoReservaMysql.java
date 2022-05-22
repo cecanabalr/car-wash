@@ -1,6 +1,6 @@
 package com.ceiba.reserva.adaptador.dao;
 
-import com.ceiba.agenda.adaptador.dao.MapeoAgenda;
+
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.reserva.modelo.dto.DtoReserva;
@@ -17,6 +17,9 @@ public class DaoReservaMysql implements DaoReserva {
     @SqlStatement(namespace="reserva", value="listarPorPlaca")
     private static  String sqlListarPorPlaca;
 
+    @SqlStatement(namespace="reserva", value="listar")
+    private static  String sqlListar;
+
     public DaoReservaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -27,5 +30,10 @@ public class DaoReservaMysql implements DaoReserva {
         paramSource.addValue("placa", placa);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListarPorPlaca,paramSource, new MapeoReserva());
 
+    }
+
+    @Override
+    public List<DtoReserva> listar() {
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoReserva());
     }
 }

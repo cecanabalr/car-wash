@@ -40,4 +40,18 @@ public class ConsultaControladorReservaTest {
                 .andExpect(jsonPath("$[0].id", is(1)));
 
     }
+
+    @Test
+    @DisplayName("Deberia listar todas las reservas")
+    void deberiaListarReservas() throws Exception {
+        // arrange
+        // act - assert
+        mocMvc.perform(get("/reservas")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].placa", is("ZXC123")))
+                .andExpect(jsonPath("$[0].id", is(1)));
+
+    }
 }

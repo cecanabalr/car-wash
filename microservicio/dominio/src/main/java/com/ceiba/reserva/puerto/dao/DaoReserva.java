@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DaoReserva {
     List<DtoReserva> listarPorPlaca(String placa);
+
+    List<DtoReserva> listar();
 }

@@ -27,4 +27,10 @@ public class ConsultaControladorReserva {
     public List<DtoReserva> listarPorFechaInicial(@PathVariable String placa) {
         return this.manejadorListarReserva.ejecutar(placa);
     }
+
+    @GetMapping()
+    @ApiOperation("Listar Reservas")
+    public List<DtoReserva> listarReservas() {
+        return this.manejadorListarReserva.ejecutar();
+    }
 }

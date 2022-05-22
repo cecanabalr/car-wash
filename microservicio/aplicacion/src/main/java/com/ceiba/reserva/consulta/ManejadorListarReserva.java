@@ -18,4 +18,8 @@ public class ManejadorListarReserva {
     public List<DtoReserva> ejecutar(String placa){
         return this.daoReserva.listarPorPlaca(placa);
     }
+
+    public List<DtoReserva> ejecutar(){
+        return this.daoReserva.listar();
+    }
 }
