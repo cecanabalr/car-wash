@@ -43,6 +43,8 @@ public class Agenda {
     }
 
     public  List<Agenda> agendas(LocalDate fechaRangoInicial, LocalDate fechaRangoFinal){
+        validarObligatorio(fechaRangoInicial, SE_DEBE_INGRESAR_LA_FECHA_INICIAL);
+        validarObligatorio(fechaRangoFinal, SE_DEBE_INGRESAR_LA_FECHA_FINAL);
         List<Agenda> agendaLista = new ArrayList<>();
         int horaInicio = HORA_INICIO;
         while ( fechaRangoInicial.isBefore(fechaRangoFinal.plusDays(1))) {
